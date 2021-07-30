@@ -31,8 +31,11 @@ public class MessageRestController {
 
     @PostMapping("/hello")
     public String sayHelloBean(@RequestBody User user){
-        this.user.firstName = user.firstName;
-        this.user.lastName = user.lastName;
-        return  "Hello, " + user.firstName + " " + user.lastName;
+        return  "Hello, " + user.getFirstName() + " " + user.getLastName();
+    }
+
+    @PutMapping("/putHello/{firstName}")
+    public String sayHelloUsingPUT(@PathVariable String firstName,@RequestParam String lastName){
+        return "Hello, " + firstName + " " + lastName;
     }
 }
